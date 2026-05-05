@@ -1,4 +1,4 @@
-const CACHE_NAME = "adfree-kakeibo-v32";
+const CACHE_NAME = "adfree-kakeibo-v33";
 const ASSETS = [
   "./",
   "./index.html",

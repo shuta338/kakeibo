@@ -35,7 +35,7 @@
       entryForm: document.getElementById("entryForm"),
       entryId: document.getElementById("entryId"),
       dateInput: document.getElementById("dateInput"),
-      weekdayBadge: document.getElementById("weekdayBadge"),
+      datePreview: document.getElementById("datePreview"),
       amountInput: document.getElementById("amountInput"),
       categoryInput: document.getElementById("categoryInput"),
       memoInput: document.getElementById("memoInput"),
@@ -194,7 +194,7 @@
 
   function updateDatePreview() {
     var dateParts = getDateParts(elements.dateInput.value);
-    elements.weekdayBadge.textContent = dateParts.weekdayText;
+    elements.datePreview.textContent = dateParts.fullDate + " " + dateParts.weekdayText;
   }
 
   function render() {
