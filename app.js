@@ -35,8 +35,7 @@
       entryForm: document.getElementById("entryForm"),
       entryId: document.getElementById("entryId"),
       dateInput: document.getElementById("dateInput"),
-      dateDisplay: document.getElementById("dateDisplay"),
-      calendarButton: document.getElementById("calendarButton"),
+      weekdayBadge: document.getElementById("weekdayBadge"),
       amountInput: document.getElementById("amountInput"),
       categoryInput: document.getElementById("categoryInput"),
       memoInput: document.getElementById("memoInput"),
@@ -74,8 +73,6 @@
     elements.entryForm.addEventListener("submit", saveEntry);
     elements.dateInput.addEventListener("change", updateDatePreview);
     elements.dateInput.addEventListener("input", updateDatePreview);
-    elements.dateDisplay.addEventListener("click", openDatePicker);
-    elements.calendarButton.addEventListener("click", openDatePicker);
     elements.cancelEditButton.addEventListener("click", resetForm);
     elements.closeInputButton.addEventListener("click", closeInputPanel);
     elements.addEntryButton.addEventListener("click", function () {
@@ -197,16 +194,7 @@
 
   function updateDatePreview() {
     var dateParts = getDateParts(elements.dateInput.value);
-    elements.dateDisplay.value = dateParts.inputText;
-  }
-
-  function openDatePicker() {
-    if (typeof elements.dateInput.showPicker === "function") {
-      elements.dateInput.showPicker();
-      return;
-    }
-    elements.dateInput.focus();
-    elements.dateInput.click();
+    elements.weekdayBadge.textContent = dateParts.weekdayText;
   }
 
   function render() {
@@ -842,16 +830,15 @@
   }
 
   function getDateParts(value) {
-    if (!value) return { fullDate: "", weekday: "", inputText: "" };
+    if (!value) return { fullDate: "", weekday: "", weekdayText: "" };
     var date = new Date(value + "T00:00:00");
-    if (Number.isNaN(date.getTime())) return { fullDate: "", weekday: "", inputText: "" };
+    if (Number.isNaN(date.getTime())) return { fullDate: "", weekday: "", weekdayText: "" };
 
     var weekdays = ["日", "月", "火", "水", "木", "金", "土"];
-    var inputDate = date.getFullYear() + "/" + pad(date.getMonth() + 1) + "/" + pad(date.getDate());
     return {
       fullDate: date.getFullYear() + "年" + (date.getMonth() + 1) + "月" + date.getDate() + "日",
       weekday: weekdays[date.getDay()],
-      inputText: inputDate + " (" + weekdays[date.getDay()] + ")"
+      weekdayText: "(" + weekdays[date.getDay()] + ")"
     };
   }
 

@@ -285,30 +285,21 @@ h2 {
   align-items: center;
 }
 
-.date-display {
-  cursor: pointer;
-}
-
-.calendar-button {
+.weekday-badge {
   display: grid;
   min-height: 48px;
   place-items: center;
   border: 1px solid var(--line);
   border-radius: 3px;
-  background: #ffffff;
+  background: #e8f0fe;
   color: var(--accent);
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 900;
+  white-space: nowrap;
 }
 
-.native-date-input {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 48px;
-  min-height: 48px;
-  opacity: 0;
-  pointer-events: none;
+.date-input {
+  cursor: pointer;
 }
 
 .form-actions {
